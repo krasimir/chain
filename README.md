@@ -31,13 +31,13 @@ Output:
 		console.log("Hello " + str + "!");
 		callback();
 	}
-	var B = function(str, callback) {
-		console.log("How are " + str + "?");
+	var B = function(str1, str2, callback) {
+		console.log("How " + str1 + " " + str2 + "?");
 		callback();
 	}
 	Chain.run(
 		[A, "world"],
-		[B, "you"],
+		[B, "are", "you"],
 		function(res, next) {
 			next();
 		}
