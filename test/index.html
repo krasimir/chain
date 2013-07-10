@@ -1,13 +1,18 @@
-Chain.js
-=====
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Chain</title>
 
-Sequencing function calls in JavaScript. 
+	</head>
+	<body>
 
-## Examples
+<script type="text/javascript" src="../Chain.js"></script>
+<script type="text/javascript">
 
-### #1 (simple)
+    /******************************************************** */ console.log("\n\nTest #1");
 
-	Chain()(
+    Chain()(
         function(res, chain) {
             console.log("A"); chain.next(10);
         },
@@ -19,15 +24,9 @@ Sequencing function calls in JavaScript.
         }
     );
 
-Output:
+    /******************************************************** */ console.log("\n\nTest #2 (passing function as array)");
 
-	A
-	B 10
-	C 11
-
-### #2 (passing function as array)
-
-	var A = function(str, callback) {
+    var A = function(str, callback) {
         console.log("Hello " + str + "!");
         callback();
     }
@@ -43,14 +42,9 @@ Output:
         }
     );
 
-Output:
+    /******************************************************** */ console.log("\n\nTest #3 (#1 + #2 + listening for chain ending)");
 
-	Hello world!
-	How are you?
-
-### #3 (#1 + #2 + listening for chain ending)
-
-	var chainFinished = function(res, chain) {
+    var chainFinished = function(res, chain) {
         console.log("End", res);
     }
     var customFunc = function(arg1, arg2, callback) {
@@ -70,16 +64,9 @@ Output:
         }
     );
 
-Output:
+    /******************************************************** */ console.log("\n\nTest #4 (Errors reporting)");
 
-	A null
-	customFunc Hello World 
-	B result(customFunc)
-	End result(B)
-
-### #4 (error reporting)
-
-	var operationA = function(res, chain) {
+    var operationA = function(res, chain) {
         chain.error({message: "Error message from operation A"}).next();
     }
     var operationB = function(res, chain) {
@@ -94,7 +81,8 @@ Output:
         operationB
     );
 
-Output:
 
-	Yes, there are some errors
-	[Object, Object]
+</script>
+
+	</body>
+</html>
